@@ -1,4 +1,9 @@
-nombre = str(input("ingrese nombre"))
+nombresin = input("introducir name: ")
 
-caps = len(nombre)
-print("nombresillo", )
+nombremayus = nombresin.upper()
+
+numeroletrinas = len(nombresin)
+
+print("{} tiene {} letras.".format(nombremayus, numeroletrinas))
+
+print(nombremayus + " tiene " + str(numeroletrinas) + " letras.")
