@@ -1,9 +1,12 @@
 class Personaje:
     
     #atributos de personaje ja
-    especie= "Humano"
-    nombre= "John"
-    altura= 2.18
+    #poner un guion bajo en el nombre de un atributo lo vuelve privado
+    #declaracion del consttructor para crear los objetos
+    def __init__(self,esp,nom,alt):
+        self.especie= esp
+        self.nombre= nom
+        self.altura= alt
     
     #metodos del personaje
     def correr(self, estado):
@@ -14,4 +17,5 @@ class Personaje:
             
     def lanzarGranada(self):
         print(self.nombre +"pego una granada")
+        
     

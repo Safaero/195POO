@@ -1,8 +1,19 @@
 from Personaje import *
 from Armas import *
 
-spartan= Personaje ()
+#solicitar datos Spartan
+print("datos del spartan")
+nombreS= input("Escriba nombre del spartan")
+especieS= input("Escribir su especie")
+alturaS= float(input("escribir altura de spartan"))
 
+print("datos del villano")
+nombreN= input("Escriba nombre del nemesis")
+especieN= input("Escribir su especie")
+alturaN= float(input("escribir altura de nemesis"))
+
+spartan= Personaje (especieS,nombreS,alturaS)
+Nemesis= Personaje (especieN,nombreN,alturaN)
 Arma= Armas ()
 
 print(spartan.nombre)
