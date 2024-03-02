@@ -6,11 +6,12 @@ print("datos del spartan")
 nombreS= input("Escriba nombre del spartan")
 especieS= input("Escribir su especie")
 alturaS= float(input("escribir altura de spartan"))
-
+print(" ")
 print("datos del villano")
 nombreN= input("Escriba nombre del nemesis")
 especieN= input("Escribir su especie")
 alturaN= float(input("escribir altura de nemesis"))
+print(" ")
 
 spartan= Personaje (especieS,nombreS,alturaS)
 Nemesis= Personaje (especieN,nombreN,alturaN)

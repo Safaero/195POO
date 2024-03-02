@@ -4,9 +4,9 @@ class Personaje:
     #poner un guion bajo en el nombre de un atributo lo vuelve privado
     #declaracion del consttructor para crear los objetos
     def __init__(self,esp,nom,alt):
-        self.especie= esp
-        self.nombre= nom
-        self.altura= alt
+        self.__especie= esp
+        self.__nombre= nom
+        self.__altura= alt
     
     #metodos del personaje
     def correr(self, estado):
