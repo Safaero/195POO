@@ -8,27 +8,31 @@ class InterfazGenerador:
         self.ventana = ventana
         self.ventana.title("Examen 2 :)")
 
-        self.longitud_var = tk.IntVar(value='')
-        self.CaracteresVar = tk.BooleanVar(value=False)
+        self.nombre_var = tk.StringVar(value='')
+        self.apep_var = tk.StringVar(value='')
+        self.apem_var = tk.StringVar(value='')
+        self.nac_var = tk.StringVar(value='')
+        self.curs_var = tk.StringVar(value='')
+        self.carrer_var = tk.StringVar(value='')
 
         tk.Label(self.ventana, text="Nombre:").pack()
-        self.entry_longitud = tk.Entry(self.ventana, textvariable=self.longitud_var)
+        self.entry_longitud = tk.Entry(self.ventana, textvariable=self.nombre_var)
         self.entry_longitud.pack()
         
         tk.Label(self.ventana, text="Apellido paterno").pack()
-        self.entry_longitud = tk.Entry(self.ventana, textvariable=self.longitud_var)
+        self.entry_longitud = tk.Entry(self.ventana, textvariable=self.apep_var)
         self.entry_longitud.pack()
         
         tk.Label(self.ventana, text="Apellido materno").pack()
-        self.entry_longitud = tk.Entry(self.ventana, textvariable=self.longitud_var)
+        self.entry_longitud = tk.Entry(self.ventana, textvariable=self.apem_var)
         self.entry_longitud.pack()
         
         tk.Label(self.ventana, text="Año de nacimiento").pack()
-        self.entry_longitud = tk.Entry(self.ventana, textvariable=self.longitud_var)
+        self.entry_longitud = tk.Entry(self.ventana, textvariable=self.nac_var)
         self.entry_longitud.pack()
         
         tk.Label(self.ventana, text="carrera:").pack()
-        self.entry_longitud = tk.Entry(self.ventana, textvariable=self.longitud_var)
+        self.entry_longitud = tk.Entry(self.ventana, textvariable=self.carrer_var)
         self.entry_longitud.pack()
 
 
@@ -41,31 +45,20 @@ class InterfazGenerador:
 
 
     def generar_matricula(self):
-        longitud = self.longitud_var.get()
-        especialesCar = self.CaracteresVar.get()
+        Nombre = self.nombre_var.get()
+        Apep = self.apep_var.get()
+        Apem = self.apem_var.get()
+        Nacimiento = self.nac_var.get()
+        Curso = self.curs_var.get()
+        Carrera = self.carrer_var.get()
+        Random = self.rando_var.get()
 
         generador = GeneradorMatricula()
-        contraseña = generador.generar_matricula(longitud, especialesCar)
+        contraseña = generador.generar_matricula(Nombre, Apep, Apem, Nacimiento, Curso, Carrera, Random)
 
         self.entry_contraseña.delete(0, tk.END)
         self.entry_contraseña.insert(0, contraseña)
-
-    def comprobar_fortaleza(self):
-        contraseña = self.entry_contraseña.get()
-        longitud = len(contraseña)
-        contiene_numeros = any(char.isdigit() for char in contraseña)
-        contiene_especiales = any(char in "!@#$%^&*()_+-=[]{}|;:,.<>?`~" for char in contraseña)
-
-        fortaleza = 0
-        if longitud >= 11:
-            fortaleza += 1
-        if contiene_numeros:
-            fortaleza += 1
-        if contiene_especiales:
-            fortaleza += 1
-
-        messagebox.showinfo("fortaleza de contraseña", f"la fortaleza de la contraseña es: {fortaleza}/3")
-
+        
 ventana = tk.Tk()
 app = InterfazGenerador(ventana)
 ventana.mainloop()
