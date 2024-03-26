@@ -7,7 +7,10 @@ objControlador = Controlador()
 
 def ejecutaInsert():
     objControlador.insertUsuario(var1.get(), var2.get(), var3.get())
-
+    
+def busUsuario():
+    usuarioBD= objControlador.buscarUsuario(varBus.get())
+    print(usuarioBD)
 # Crear la ventana
 Ventana = Tk()
 Ventana.title("CRUD USUARIOS")
@@ -48,4 +51,16 @@ Entry(pestana1, textvariable=var3).pack()
 
 Button(pestana1, text="guardar usuario", command=ejecutaInsert).pack()
 
+#buscar usuario jajja
+
+Label(pestana2, text="Buscar usuario de Usuario", fg="red", font=("New Times Roman", 18)).pack()
+
+varBus = tk.StringVar()
+Label(pestana2, text="id:").pack()
+Entry(pestana2, textvariable=varBus).pack()
+
+Button(pestana2,text="buscar usuario", command=busUsuario).pack()
+
+Label(pestana2, text="registrado", fg="blue",font=("New Times Roman", 16)).pack()
+tk.Text(pestana2,height=5, width=52).pack()
 Ventana.mainloop()
