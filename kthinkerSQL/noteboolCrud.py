@@ -1,5 +1,4 @@
-from tkinter import *
-from tkinter import ttk
+from tkinter import Tk, Label, Entry, Button, Text, ttk
 import tkinter as tk
 from Controlador import *
 
@@ -9,32 +8,37 @@ def ejecutaInsert():
     objControlador.insertUsuario(var1.get(), var2.get(), var3.get())
     
 def busUsuario():
-    usuarioBD= objControlador.buscarUsuario(varBus.get())
-    print(usuarioBD)
-# Crear la ventana
+    usuarioBD = objControlador.buscarUsuario(varBus.get())
+
+    resultado_texto.delete(1.0, tk.END)
+    if usuarioBD:
+
+        resultado_texto.insert(tk.END, usuarioBD)
+    else:
+        resultado_texto.insert(tk.END, "Usuario no encontrado")
+
+
 Ventana = Tk()
 Ventana.title("CRUD USUARIOS")
 Ventana.geometry("500x300")
 
-# Preparar el notebook para pestañas
+
 panel = ttk.Notebook(Ventana)
 panel.pack(fill='both', expand="yes")
 
-# Definir las pestañas del notebook
+
 pestana1 = ttk.Frame(panel)
 pestana2 = ttk.Frame(panel)
 pestana3 = ttk.Frame(panel)
 pestana4 = ttk.Frame(panel)
 pestana5 = ttk.Frame(panel)
 
-# Agregar las pestañas
 panel.add(pestana1, text="Crear usuario")
 panel.add(pestana2, text="Buscar usuario")
 panel.add(pestana3, text="Consultar usuario")
 panel.add(pestana4, text="Editar usuario")
 panel.add(pestana5, text="Eliminar usuario")
 
-# Pestaña 1 formulario de insertar
 Label(pestana1, text="Registro de Usuario", fg="green", font=("New Times Roman", 18)).pack()
 
 var1 = tk.StringVar()
@@ -51,16 +55,15 @@ Entry(pestana1, textvariable=var3).pack()
 
 Button(pestana1, text="guardar usuario", command=ejecutaInsert).pack()
 
-#buscar usuario jajja
-
-Label(pestana2, text="Buscar usuario de Usuario", fg="red", font=("New Times Roman", 18)).pack()
+Label(pestana2, text="Buscar usuario por ID", fg="red", font=("New Times Roman", 18)).pack()
 
 varBus = tk.StringVar()
-Label(pestana2, text="id:").pack()
+Label(pestana2, text="ID:").pack()
 Entry(pestana2, textvariable=varBus).pack()
 
-Button(pestana2,text="buscar usuario", command=busUsuario).pack()
+Button(pestana2, text="Buscar usuario", command=busUsuario).pack()
 
-Label(pestana2, text="registrado", fg="blue",font=("New Times Roman", 16)).pack()
-tk.Text(pestana2,height=5, width=52).pack()
+resultado_texto = Text(pestana2, height=5, width=52)
+resultado_texto.pack()
+
 Ventana.mainloop()
