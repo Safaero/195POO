@@ -77,6 +77,7 @@ resultado_texto.pack()
 
 Label(pestana3, text="Consulta de todos los usuarios", fg="blue", font=("New Times Roman", 18)).pack()
 
+Button(pestana3, text="Actualizar", command=consultarTodos).pack()
 resultado_texto_consulta = Text(pestana3, height=10, width=52)
 resultado_texto_consulta.pack()
 consultarTodos()
