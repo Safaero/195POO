@@ -16,7 +16,16 @@ def busUsuario():
         resultado_texto.insert(tk.END, usuarioBD)
     else:
         resultado_texto.insert(tk.END, "Usuario no encontrado")
+        
+def consultarTodos():
+    usuarios = objControlador.consultarTodosUsuarios()
 
+    resultado_texto_consulta.delete(1.0, tk.END)
+    if usuarios:
+        for usuario in usuarios:
+            resultado_texto_consulta.insert(tk.END, f"ID: {usuario[0]}, Nombre: {usuario[1]}, Correo: {usuario[2]}\n")
+    else:
+        resultado_texto_consulta.insert(tk.END, "no hay usuarios")
 
 Ventana = Tk()
 Ventana.title("CRUD USUARIOS")
@@ -66,4 +75,9 @@ Button(pestana2, text="Buscar usuario", command=busUsuario).pack()
 resultado_texto = Text(pestana2, height=5, width=52)
 resultado_texto.pack()
 
+Label(pestana3, text="Consulta de todos los usuarios", fg="blue", font=("New Times Roman", 18)).pack()
+
+resultado_texto_consulta = Text(pestana3, height=10, width=52)
+resultado_texto_consulta.pack()
+consultarTodos()
 Ventana.mainloop()
